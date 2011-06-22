@@ -7,7 +7,7 @@ type ``about tuples``() =
     member this.CreatingTuples() =
         let items = ("apple", "dog")
         
-        AssertEquality items __
+        AssertEquality items ("apple", "dog")
         
     [<Koan>]
     member this.AccessingTupleElements() =
@@ -16,8 +16,8 @@ type ``about tuples``() =
         let fruit = fst items
         let animal = snd items
         
-        AssertEquality fruit __
-        AssertEquality animal __
+        AssertEquality fruit "apple"
+        AssertEquality animal "dog"
 
     (* although you can access the items
        of a two element tuple with fst and snd,
@@ -31,17 +31,17 @@ type ``about tuples``() =
         
         let fruit, animal, car = items
         
-        AssertEquality fruit __
-        AssertEquality animal __
-        AssertEquality car __
+        AssertEquality fruit "apple"
+        AssertEquality animal "dog"
+        AssertEquality car "Mustang"
         
     [<Koan>]
     member this.IgnoringValuesWithPatternMatching() =
         let items = ("apple", "dog", "Mustang")
         
-        let _, animal, _ = items
+        let fruit, animal, car = items
         
-        AssertEquality animal __
+        AssertEquality animal "dog"
     
     (* NOTE: pattern matching is found in many places
              throughout F#, and we'll revisit it again later *)
@@ -54,8 +54,8 @@ type ``about tuples``() =
         let squared, cubed = squareAndCube 3.0
         
         
-        AssertEquality squared __
-        AssertEquality cubed __
+        AssertEquality squared 9
+        AssertEquality cubed 27
     
     (* THINK ABOUT IT: Is there really more than one return value?
                        What type does the squareAndCube function
@@ -68,4 +68,4 @@ type ``about tuples``() =
             
         let result = squareAndCube 3.0
        
-        AssertEquality result __
+        AssertEquality result (9, 27)
